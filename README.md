@@ -9,7 +9,9 @@ This repository contains Python scripts to manage guest data for the Startup Wor
 - **`generate-qrcodes.py`**: Generates unique QR codes for each guest, linking them to their personalized user portal page for easy access.
 - **`server.py`**: A Flask web application that serves the user portal, handles guest check-ins via QR code scans, processes startup votes, and collects event feedback.
 - **User Portal (`/user_portal`)**: A personalized page for each guest to check in, vote for startups, and provide event feedback. The links dynamically disable once the action is completed.
-- **Vote for Startup Page (`/vote`)**: Allows guests to vote for their favorite startups across different categories (Most Inspiring Pitch, Crowd Favorite, Most Innovative Idea).
+- **Vote for Startup Page (`/vote`)**: Allows guests to vote for their favorite startups in two categories:
+  - **Most Inspiring Pitch**: Vote for the pitch that truly moved you. Which founder's vision or story made the biggest impression and sparked your excitement for their idea?
+  - **Most Investable Startup**: Select the startup you think is most likely to succeed financially and generate impressive returns. Consider their market, team, and business model.
 - **Event Feedback Page (`/feedback`)**: Collects valuable feedback from guests about their event experience.
 
 ## Setup
@@ -115,6 +117,9 @@ This project includes a `cloudbuild.yaml` for automated deployment to Google Clo
 - All scripts and the web server use environment variables for configuration.
 - Ensure your service accounts (local, Cloud Build, Cloud Run runtime) have the necessary IAM permissions for Firestore, GCS, and Secret Manager.
 
+## UI/UX Improvements
+
+The user portal, voting, and feedback pages are now mobile-friendly with larger touch targets, improved font sizes, and layouts that make the best use of available screen space on mobile devices.
+
 ## License
-MIT 
 MIT 
