@@ -1,0 +1,8 @@
+pandas
+google-cloud-firestore
+google-cloud-storage
+python-dotenv 
+qrcode
+Pillow
+Flask
+gunicorn

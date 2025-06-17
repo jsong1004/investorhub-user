@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestorHub - User Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f5f6fa; }
+        .navbar { background: #232b39; }
+        .navbar-brand, .navbar-text { color: #fff !important; font-weight: 600; }
+        .footer { background: #232b39; color: #fff; text-align: center; padding: 1rem 0; position: fixed; width: 100%; bottom: 0; }
+        .main-card { max-width: 600px; margin: 40px auto 0 auto; }
+        .event-card { background: #f0f4ff; border: 1px solid #dbeafe; }
+        .links-card { margin-top: 32px; }
+        .btn-hub { width: 100%; margin-bottom: 16px; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('user_portal', email=email) }}">
+                <span style="font-weight: bold; font-size: 1.3rem;">&#128200; InvestorHub</span>
+            </a>
+            <span class="navbar-text">Your hub for smart, transparent investments</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-card">
+        <!-- Event Info Card -->
+        <div class="card event-card mb-4">
+            <div class="card-body">
+                <h4 class="card-title text-primary mb-2" style="font-weight: 700;">The Startup World Cup Seattle Regional</h4>
+                <p class="card-text mb-0">
+                    The event brings together the brightest entrepreneurs, investors, and industry leaders to witness Seattle's top startups compete for a chance to represent the region at the global Startup World Cup finals and win a $1 million investment prize.
+                </p>
+            </div>
+        </div>
+
+        <!-- Message Card -->
+        {% if status_message %}
+        <div class="card text-center mb-4">
+            <div class="card-body">
+                <h5 class="card-title text-success mb-0">{{ status_message }}</h5>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Links Card -->
+        <div class="card links-card">
+            <div class="card-body">
+                <h5 class="card-title mb-3" style="font-weight: 600;">Your Event Actions</h5>
+                <a href="{{ checkin_url }}" class="btn btn-primary btn-hub {% if is_checkin_disabled %}disabled{% endif %}" {% if is_checkin_disabled %}aria-disabled="true"{% endif %}>Check In</a>
+                <a href="{{ vote_url }}" class="btn btn-outline-primary btn-hub {% if is_vote_disabled %}disabled{% endif %}" {% if is_vote_disabled %}aria-disabled="true"{% endif %}>Vote for Startup</a>
+                <a href="{{ feedback_url }}" class="btn btn-outline-secondary btn-hub">Event Feedback</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 InvestorHub. All rights reserved.
+    </div>
+</body>
+</html> 

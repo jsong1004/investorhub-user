@@ -1,0 +1,42 @@
+steps:
+# Step 1: Fetch the service account key from Secret Manager
+- id: 'fetch-secret'
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud secrets versions access latest --secret=ServiceAccountKey --project=myresume-457817 > service-account-key.json
+
+# Step 2: Build the Docker image
+- id: 'build-docker-image'
+  name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '-t'
+  - 'gcr.io/myresume-457817/investorhub-user'
+  - '.'
+
+# Step 3: Push the Docker image to Container Registry
+- id: 'push-docker-image'
+  name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'push'
+  - 'gcr.io/myresume-457817/investorhub-user'
+
+# Deploy to Cloud Run
+- id: 'deploy-to-cloud-run'
+  name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - 'run'
+  - 'deploy'
+  - 'investorhub-user' # Replace with your desired service name
+  - '--image=gcr.io/myresume-457817/investorhub-user'
+  - '--platform=managed'
+  - '--region=us-central1' # Replace with your desired region (e.g., us-central1, us-west1, etc.)
+  - '--allow-unauthenticated' # Or configure authentication as needed
+  - '--port=5000' # Explicitly set the port for Cloud Run
+  - '--set-env-vars=PROJECT_ID=myresume-457817,DATABASE_ID=investorhub,COLLECTION_NAME=Startup-World-Cup-Seattle-Regional-Guests,BUCKET_NAME=investor-hub,CSV_FILE_NAME=Startup-World-Cup-Seattle-Regional-Guests.csv,USER_PORTAL_BASE_URL=https://investorhub-user.ai-biz.app' # Set your Cloud Run service URL here
+
+images:
+- 'gcr.io/myresume-457817/investorhub-user' 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestorHub - Vote for Startup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f5f6fa; }
+        .navbar { background: #232b39; }
+        .navbar-brand, .navbar-text { color: #fff !important; font-weight: 600; }
+        .footer { background: #232b39; color: #fff; text-align: center; padding: 1rem 0; position: fixed; width: 100%; bottom: 0; }
+        .main-card { max-width: 800px; margin: 40px auto 0 auto; padding-bottom: 80px; } /* Increased max-width and added padding-bottom for footer */
+        .category-card { margin-bottom: 24px; border: 1px solid #dbeafe; background-color: #f0f4ff; padding: 20px; border-radius: 8px; }
+        .form-check { margin-bottom: 8px; }
+        .btn-submit-vote { width: 100%; padding: 12px; font-size: 1.1rem; }
+        .status-message-card { max-width: 800px; margin: 20px auto; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('user_portal', email=email) }}">
+                <span style="font-weight: bold; font-size: 1.3rem;">&#128200; InvestorHub</span>
+            </a>
+            <span class="navbar-text">Your hub for smart, transparent investments</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-card">
+        <h2 class="text-center mb-4" style="font-weight: 700;">Vote for Your Favorite Startups</h2>
+
+        {% if vote_status_message %}
+        <div class="card status-message-card text-center mb-4">
+            <div class="card-body">
+                <h5 class="card-title text-success mb-0">{{ vote_status_message }}</h5>
+            </div>
+        </div>
+        {% endif %}
+
+        <form action="{{ url_for('submit_vote') }}" method="POST">
+            <input type="hidden" name="email" value="{{ email }}">
+
+            <!-- Most Inspiring Pitch -->
+            <div class="card category-card">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 600;">1. Most Inspiring Pitch</h5>
+                    <p class="card-text">Which startup's story or presentation inspired you the most?</p>
+                    {% for company in companies %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="inspiring_pitch" id="inspiring_pitch_{{ loop.index }}" value="{{ company }}" {% if is_vote_disabled %}disabled{% endif %}>
+                        <label class="form-check-label" for="inspiring_pitch_{{ loop.index }}">
+                            {{ company }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Crowd Favorite -->
+            <div class="card category-card">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 600;">2. Crowd Favorite</h5>
+                    <p class="card-text">Which startup would you most like to see succeed or support? (The one that captured your heart or excitement!)</p>
+                    {% for company in companies %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="crowd_favorite" id="crowd_favorite_{{ loop.index }}" value="{{ company }}" {% if is_vote_disabled %}disabled{% endif %}>
+                        <label class="form-check-label" for="crowd_favorite_{{ loop.index }}">
+                            {{ company }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Most Innovative Idea -->
+            <div class="card category-card">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 600;">3. Most Innovative Idea</h5>
+                    <p class="card-text">Which startup introduced the most creative or unique idea at the event?</p>
+                    {% for company in companies %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="innovative_idea" id="innovative_idea_{{ loop.index }}" value="{{ company }}" {% if is_vote_disabled %}disabled{% endif %}>
+                        <label class="form-check-label" for="innovative_idea_{{ loop.index }}">
+                            {{ company }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit-vote mt-4" {% if is_vote_disabled %}disabled{% endif %}>Submit Your Votes</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 InvestorHub. All rights reserved.
+    </div>
+</body>
+</html> 
