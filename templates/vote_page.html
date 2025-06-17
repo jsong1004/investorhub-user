@@ -8,7 +8,7 @@
     <style>
         body { 
             background: #f5f6fa; 
-            font-size: 16px; /* Increased base font size */
+            font-size: 16px;
         }
         .navbar { 
             background: #232b39; 
@@ -31,29 +31,21 @@
             bottom: 0; 
         }
         .main-card { 
-            max-width: 100%; /* Full width on mobile */
+            max-width: 100%;
             margin: 20px 15px 0 15px;
             padding-bottom: 80px;
         }
-        .category-card { 
+        .vote-card { 
             margin-bottom: 24px; 
             border: 1px solid #dbeafe; 
             background-color: #f0f4ff; 
             padding: 1.5rem; 
             border-radius: 8px; 
         }
-        .form-check { 
-            margin-bottom: 12px; /* Increased spacing between options */
-            padding-left: 2rem; /* Increased padding for radio buttons */
-        }
-        .form-check-input {
-            width: 1.5rem; /* Larger radio buttons */
-            height: 1.5rem;
-            margin-top: 0.3rem;
-        }
-        .form-check-label {
-            font-size: 1.1rem; /* Increased label font size */
-            padding-top: 0.2rem;
+        .form-select {
+            font-size: 1.1rem;
+            padding: 0.8rem;
+            margin-bottom: 1.5rem;
         }
         .btn-submit-vote { 
             width: 100%; 
@@ -72,6 +64,16 @@
         .card-text {
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
+        }
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .section-desc {
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
         @media (min-width: 768px) {
             .main-card {
@@ -111,52 +113,26 @@
         <form action="{{ url_for('submit_vote') }}" method="POST">
             <input type="hidden" name="email" value="{{ email }}">
 
-            <!-- Most Inspiring Pitch -->
-            <div class="card category-card">
-                <div class="card-body">
-                    <h5 class="card-title" style="font-weight: 600;">1. Most Inspiring Pitch</h5>
-                    <p class="card-text">Which startup's story or presentation inspired you the most?</p>
+            <div class="card vote-card">
+                <!-- Most Inspiring Pitch -->
+                <div class="section-title">Most Inspiring Pitch</div>
+                <div class="card-text">Vote for the pitch that truly moved you. Which founder's vision or story made the biggest impression and sparked your excitement for their idea?</div>
+                <select class="form-select" name="inspiring_pitch" {% if is_vote_disabled %}disabled{% endif %} required>
+                    <option value="">Select a startup</option>
                     {% for company in companies %}
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="inspiring_pitch" id="inspiring_pitch_{{ loop.index }}" value="{{ company }}" {% if is_vote_disabled %}disabled{% endif %}>
-                        <label class="form-check-label" for="inspiring_pitch_{{ loop.index }}">
-                            {{ company }}
-                        </label>
-                    </div>
+                    <option value="{{ company }}">{{ company }}</option>
                     {% endfor %}
-                </div>
-            </div>
+                </select>
 
-            <!-- Crowd Favorite -->
-            <div class="card category-card">
-                <div class="card-body">
-                    <h5 class="card-title" style="font-weight: 600;">2. Crowd Favorite</h5>
-                    <p class="card-text">Which startup would you most like to see succeed or support? (The one that captured your heart or excitement!)</p>
+                <!-- Most Investable Startup -->
+                <div class="section-title">Most Investable Startup</div>
+                <div class="card-text">Select the startup you think is most likely to succeed financially and generate impressive returns. Consider their market, team, and business model.</div>
+                <select class="form-select" name="crowd_favorite" {% if is_vote_disabled %}disabled{% endif %} required>
+                    <option value="">Select a startup</option>
                     {% for company in companies %}
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="crowd_favorite" id="crowd_favorite_{{ loop.index }}" value="{{ company }}" {% if is_vote_disabled %}disabled{% endif %}>
-                        <label class="form-check-label" for="crowd_favorite_{{ loop.index }}">
-                            {{ company }}
-                        </label>
-                    </div>
+                    <option value="{{ company }}">{{ company }}</option>
                     {% endfor %}
-                </div>
-            </div>
-
-            <!-- Most Innovative Idea -->
-            <div class="card category-card">
-                <div class="card-body">
-                    <h5 class="card-title" style="font-weight: 600;">3. Most Innovative Idea</h5>
-                    <p class="card-text">Which startup introduced the most creative or unique idea at the event?</p>
-                    {% for company in companies %}
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="innovative_idea" id="innovative_idea_{{ loop.index }}" value="{{ company }}" {% if is_vote_disabled %}disabled{% endif %}>
-                        <label class="form-check-label" for="innovative_idea_{{ loop.index }}">
-                            {{ company }}
-                        </label>
-                    </div>
-                    {% endfor %}
-                </div>
+                </select>
             </div>
 
             <button type="submit" class="btn btn-primary btn-submit-vote mt-4" {% if is_vote_disabled %}disabled{% endif %}>Submit Your Votes</button>
