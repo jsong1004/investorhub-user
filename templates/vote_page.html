@@ -124,15 +124,19 @@
                     {% endfor %}
                 </select>
 
-                <!-- Most Investable Startup -->
-                <div class="section-title">Most Investable Startup</div>
-                <div class="card-text">Select the startup you think is most likely to succeed financially and generate impressive returns. Consider their market, team, and business model.</div>
-                <select class="form-select" name="most_investable" {% if is_vote_disabled %}disabled{% endif %} required>
-                    <option value="">Select a startup</option>
-                    {% for company in companies %}
-                    <option value="{{ company }}">{{ company }}</option>
-                    {% endfor %}
-                </select>
+                {#
+                <!-- Most Investable Startup (hidden for now) -->
+                <div style="display:none;">
+                    <div class="section-title">Most Investable Startup</div>
+                    <div class="card-text">Select the startup you think is most likely to succeed financially and generate impressive returns. Consider their market, team, and business model.</div>
+                    <select class="form-select" name="most_investable" {% if is_vote_disabled %}disabled{% endif %}>
+                        <option value="">Select a startup</option>
+                        {% for company in companies %}
+                        <option value="{{ company }}">{{ company }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                #}
             </div>
 
             <button type="submit" class="btn btn-primary btn-submit-vote mt-4" {% if is_vote_disabled %}disabled{% endif %}>Submit Your Votes</button>
