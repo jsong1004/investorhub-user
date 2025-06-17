@@ -6,14 +6,63 @@
     <title>InvestorHub - User Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background: #f5f6fa; }
-        .navbar { background: #232b39; }
-        .navbar-brand, .navbar-text { color: #fff !important; font-weight: 600; }
-        .footer { background: #232b39; color: #fff; text-align: center; padding: 1rem 0; position: fixed; width: 100%; bottom: 0; }
-        .main-card { max-width: 600px; margin: 40px auto 0 auto; }
-        .event-card { background: #f0f4ff; border: 1px solid #dbeafe; }
-        .links-card { margin-top: 32px; }
-        .btn-hub { width: 100%; margin-bottom: 16px; font-weight: 500; }
+        body { 
+            background: #f5f6fa; 
+            font-size: 16px; /* Increased base font size */
+        }
+        .navbar { 
+            background: #232b39; 
+            padding: 1rem;
+        }
+        .navbar-brand, .navbar-text { 
+            color: #fff !important; 
+            font-weight: 600; 
+        }
+        .navbar-brand span {
+            font-size: 1.5rem !important; /* Increased brand font size */
+        }
+        .footer { 
+            background: #232b39; 
+            color: #fff; 
+            text-align: center; 
+            padding: 1rem 0; 
+            position: fixed; 
+            width: 100%; 
+            bottom: 0; 
+        }
+        .main-card { 
+            max-width: 100%; /* Full width on mobile */
+            margin: 20px 15px 0 15px; /* Adjusted margins */
+            padding-bottom: 80px;
+        }
+        .event-card { 
+            background: #f0f4ff; 
+            border: 1px solid #dbeafe;
+            padding: 1.5rem;
+        }
+        .links-card { 
+            margin-top: 24px;
+            padding: 1.5rem;
+        }
+        .btn-hub { 
+            width: 100%; 
+            margin-bottom: 16px; 
+            font-weight: 500;
+            padding: 1rem; /* Increased button padding */
+            font-size: 1.1rem; /* Increased button font size */
+        }
+        .card-title {
+            font-size: 1.4rem; /* Increased card title size */
+        }
+        .card-text {
+            font-size: 1.1rem; /* Increased card text size */
+        }
+        @media (min-width: 768px) {
+            .main-card {
+                max-width: 600px;
+                margin: 40px auto 0 auto;
+            }
+        }
     </style>
 </head>
 <body>

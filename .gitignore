@@ -22,4 +22,7 @@ venv/
 instance/
 
 # QRCodes output directory
-qrcodes/ 
+qrcodes/
+
+# Google Cloud Service Account Key
+service-account-key.json 
