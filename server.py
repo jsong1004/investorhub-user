@@ -156,7 +156,7 @@ def vote_page():
 def submit_vote():
     email = request.form.get("email")
     inspiring_pitch = request.form.get("inspiring_pitch")
-    crowd_favorite = request.form.get("crowd_favorite")
+    most_investable = request.form.get("most_investable")
     innovative_idea = request.form.get("innovative_idea")
 
     if not email:
@@ -174,7 +174,7 @@ def submit_vote():
     vote_data = {
         "email": email,
         "inspiring_pitch": inspiring_pitch,
-        "crowd_favorite": crowd_favorite,
+        "most_investable": most_investable,
         "innovative_idea": innovative_idea,
         "timestamp": firestore.SERVER_TIMESTAMP
     }

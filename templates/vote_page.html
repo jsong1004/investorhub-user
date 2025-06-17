@@ -127,7 +127,7 @@
                 <!-- Most Investable Startup -->
                 <div class="section-title">Most Investable Startup</div>
                 <div class="card-text">Select the startup you think is most likely to succeed financially and generate impressive returns. Consider their market, team, and business model.</div>
-                <select class="form-select" name="crowd_favorite" {% if is_vote_disabled %}disabled{% endif %} required>
+                <select class="form-select" name="most_investable" {% if is_vote_disabled %}disabled{% endif %} required>
                     <option value="">Select a startup</option>
                     {% for company in companies %}
                     <option value="{{ company }}">{{ company }}</option>
