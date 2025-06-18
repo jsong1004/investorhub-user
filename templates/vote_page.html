@@ -114,7 +114,7 @@
             <input type="hidden" name="email" value="{{ email }}">
 
             <div class="card vote-card">
-                <!-- Most Inspiring Pitch -->
+            <!-- Most Inspiring Pitch -->
                 <div class="section-title">Most Inspiring Pitch</div>
                 <div class="card-text">Vote for the pitch that truly moved you. Which founder's vision or story made the biggest impression and sparked your excitement for their idea?</div>
                 <select class="form-select" name="inspiring_pitch" {% if is_vote_disabled %}disabled{% endif %} required>
@@ -131,9 +131,9 @@
                     <div class="card-text">Select the startup you think is most likely to succeed financially and generate impressive returns. Consider their market, team, and business model.</div>
                     <select class="form-select" name="most_investable" {% if is_vote_disabled %}disabled{% endif %}>
                         <option value="">Select a startup</option>
-                        {% for company in companies %}
+                    {% for company in companies %}
                         <option value="{{ company }}">{{ company }}</option>
-                        {% endfor %}
+                    {% endfor %}
                     </select>
                 </div>
                 #}
