@@ -1,3 +1,9 @@
+# This script sends email reminders to event attendees using SendGrid API.
+# Note: SendGrid has a free tier limitation of 100 emails per day.
+# If you need to send more emails, consider upgrading to a paid plan or using a different email service.
+# The script reads attendee information from Firestore and sends personalized reminders
+# with event details, parking information, and a link to the check-in/voting portal.
+
 import os
 import ssl
 from google.cloud import firestore
@@ -24,10 +30,18 @@ def send_reminder_email(name, email):
         subject="Event Reminder - Startup World Cup Seattle Regional",
         html_content=f"""
         <p>Hi {name},</p>
-        <p>This is a reminder that the Startup World Cup Seattle Regional event is just one day away! Join us tomorrow, Wednesday, June 18th, from 5:00 PM to 8:30 PM for an evening of innovation.</p>
-        <p>We're excited to host you at the University of Washington's Kane Auditorium.</p>
-        <p><b style='color:#1a73e8;'>To ensure a smooth experience, please use your personalized event portal to check in and cast your votes for the competing startups:</b></p>
-        <p><a href='{personal_link}'>{personal_link}</a></p>
+        <p>This is a reminder that the Startup World Cup Seattle Regional event is happening today, from 5:00 PM to 8:30 PM, for an evening of innovation!</p>
+        <p>We're excited to host you at the University of Washington's Kane Auditorium (Kane Hall).</p>
+        <b>Parking Information:</b>
+        <ul>
+            <li><b>The closest and most convenient parking for Kane Hall is the Central Plaza Parking Garage (CPG).</b></li>
+            <li><b>Entrance:</b> Via NE 41st St, just off 15th Ave NE.</li>
+            <li><b>Parking Rates:</b> Flat rate after 4 PM (approximately $13).</li>
+            <li><b>Payment:</b> You can pay at the gatehouse or use PayByPhone (Location ID: 123211).</li>
+            <li><b>Accessibility:</b> An elevator in the northeast corner of the garage brings you directly to Red Square, just a few steps from Kane Hall.</li>
+        </ul>
+<p>To ensure a smooth experience and to participate fully in the event, please use your personalized event portal to check in upon arrival and to vote for your favorite startups! </p>
+<p><b> Check In and Voting Portal:</b><p><p><a href='{personal_link}'>{personal_link}</a></p><p>Your vote matters for our special <b>"Audience Choice Awards"</b> – support and cheer for your favorite startup</p>
         <p>We look forward to seeing you there and appreciate your support for the entrepreneurial community!</p>
         <p>Sincerely,<br>The Startup World Cup Seattle Regional Team</p>
         """

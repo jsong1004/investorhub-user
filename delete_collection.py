@@ -7,7 +7,8 @@ load_dotenv()
 
 PROJECT_ID = os.getenv("PROJECT_ID")
 DATABASE_ID = os.getenv("DATABASE_ID")
-COLLECTION_NAME = os.getenv("COLLECTION_NAME")
+
+COLLECTION_NAME = input("Enter the Firestore collection name to delete: ").strip()
 
 batch_size = 500
 

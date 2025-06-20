@@ -6,11 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is an event management system for the Startup World Cup Seattle Regional, built with Flask and Google Cloud services. The system manages guest data, QR code generation, check-ins, voting, and feedback collection using Firestore as the database and Cloud Storage for CSV imports.
 
 ## Architecture
-- **Flask Web Application** (`server.py`): Main web server with 7 routes handling user portal, check-ins, voting, and feedback
+- **Flask Web Application** (`server.py`): Main web server with 6 core routes handling user portal, check-ins, voting, and feedback
 - **Guest Management Scripts**: Python utilities for importing, updating, and managing guest data
 - **Google Cloud Integration**: Uses Firestore for data storage, Cloud Storage for CSV files, and Secret Manager for credentials
-- **QR Code System**: Generates unique QR codes linking to personalized user portal pages
-- **Deployment**: Containerized with Docker and deployed to Google Cloud Run via Cloud Build
+- **QR Code System**: Generates unique QR codes linking to personalized user portal pages (`qrcodes/` directory)
+- **Email System**: SendGrid integration for guest reminders and judge notifications
+- **Deployment**: Containerized with Docker and deployed to Google Cloud Run via Cloud Build (port 5000)
 
 ## Key Components
 - **User Portal** (`/user_portal`): Personalized pages for guests accessed via QR codes with dynamic button states
@@ -20,7 +21,8 @@ This is an event management system for the Startup World Cup Seattle Regional, b
   - Votes collection: `Startup-World-Cup-Seattle-Regional-Votes`
   - Feedback collection: `Startup-World-Cup-Seattle-Regional-Feedback`
 - **Voting Categories**: Most Inspiring Pitch, Most Investable Startup, Most Innovative Idea
-- **Companies**: Hardcoded list of 10 companies in `server.py:17-28`
+- **Companies**: Hardcoded list of 10 companies in `server.py:17-28` (Airbuild, Cromodata, Eco SmarTiles, Emerald Battery Labs, GreenThumb AI, Koidra, Pivotal Build, RealEngineers, REearthable, Zesty)
+- **Email Communication**: Scripts for sending judge emails and reminder notifications using SendGrid
 
 ## Environment Configuration
 The application uses environment variables loaded from `.env` file:
@@ -60,8 +62,14 @@ python add-checkin.py
 # Generate QR codes for all guests
 python generate-qrcodes.py
 
-# Send reminder emails
+# Send reminder emails to guests  
 python send_reminder.py
+
+# Send temporary reminder emails
+python send_temp_reminder.py
+
+# Send emails to judges
+python send_judge_email.py
 
 # Delete entire collection (use with caution)
 python delete_collection.py
@@ -85,6 +93,7 @@ gcloud builds submit --config cloudbuild.yaml .
 - **Duplicate Prevention**: All submissions check for existing documents before creating new ones
 - **Status Messages**: Context-aware messages based on completion state combinations
 - **Email-based Document Keys**: All collections use email as document ID for consistent lookups
+- **Voting Data Structure**: Each vote document contains email, timestamp, and votes for all 3 categories (inspiring_pitch, most_investable, innovative_idea)
 
 ## Template Structure
 - `user_portal.html`: Main landing page with three action buttons
