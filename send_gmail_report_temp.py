@@ -16,27 +16,11 @@ EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")  # Your Gmail address
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")  # App password for Gmail
 USER_PORTAL_BASE_URL = os.getenv("USER_PORTAL_BASE_URL", "https://investorhub-user.ai-biz.app/user_portal")
 
-def load_people_from_csv(file_path):
-    """Loads a list of (name, email) tuples from the specified CSV file."""
-    people = []
-    try:
-        with open(file_path, mode='r', encoding='utf-8') as infile:
-            reader = csv.reader(infile)
-            next(reader)  # Skip header row
-            for row in reader:
-                if row and len(row) > 3: # Check if row has enough columns
-                    name = row[0].strip()
-                    email = row[3].strip()
-                    if name and email and '@' in email: # Ensure both name and email are present and valid
-                        people.append((name, email))
-    except FileNotFoundError:
-        print(f"Error: The file {file_path} was not found.")
-    except Exception as e:
-        print(f"An error occurred while reading the CSV file: {e}")
-    return people
+PEOPLE = [
 
-# PEOPLE list is now populated from the CSV file
-PEOPLE = load_people_from_csv('data/Startup-World-Cup-Seattle-Regional-Guests.csv')
+    ("Jae Rhee", "jaerhee@uw.edu")
+]
+
 
 def send_report_email(name, email):
     html_content = """

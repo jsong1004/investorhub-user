@@ -18,7 +18,7 @@ USER_PORTAL_BASE_URL = os.getenv("USER_PORTAL_BASE_URL", "https://investorhub-us
 # Replace this list with your actual (name, email) pairs
 PEOPLE = [
 
-    ("Shaan Kumar", "shaank22@uw.edu")
+    ("Jae Rhee", "jaerhee@uw.edu")
 ]
 
 def send_reminder_email(name, email):
