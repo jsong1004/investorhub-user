@@ -299,7 +299,7 @@ def send_report_email(name, email):
             <div class="section">
                 <h2>🌟 Event Highlights</h2>
                 <p>Thank you for being part of the Startup World Cup Seattle Regional! Our event brought together the brightest entrepreneurs, investors, and industry leaders in an exciting competition for a chance to represent Seattle at the global Startup World Cup finals and compete for a $1 million investment prize.</p>
-                <p>This year’s event even drew attention from the international startup community. Startups from South Korea and Argentina applied to pitch, including Cromodata, a company building a Marketplace for Tokenized Health Data, which flew in all the way from Argentina to compete for 1st place.</p>
+                <p>This year's event even drew attention from the international startup community. Startups from South Korea and Argentina applied to pitch, including Cromodata, a company building a Marketplace for Tokenized Health Data, which flew in all the way from Argentina to compete for 1st place.</p>
                 
                 <div class="stats-row">
                     <div class="stat-item">
@@ -344,35 +344,29 @@ def send_report_email(name, email):
                 <div class="winners-section">
                     <div class="winner-card">
                         <h4>🥇 1st Place: NewGem</h4>
-                        <div class="score-badge">Judge's Score: 81.0</div>
                         <p><strong>FoodTech - Wraps Made from Fruits & Vegetables</strong></p>
                         <p>• 253 retail doors including Whole Foods, Safeway, Raley's<br>
                         • $1M revenue forecast for 2025<br>
                         • 64% gross margins with 20+ years team experience<br>
                         • Mondelez participation rights secured</p>
-                        <a href="https://investorhub-dash.ai-biz.app/company/NewGem" class="cta-button" target="_blank">📊 View Score Card</a>
                     </div>
                     
                     <div class="winner-card">
                         <h4>🥈 2nd Place: Airbuild</h4>
-                        <div class="score-badge">Judge's Score: 73.0</div>
                         <p><strong>Climate Tech - Carbon Capture & Water Treatment</strong></p>
                         <p>• $15.3M pipeline contracts in place<br>
                         • $1.68T total addressable market<br>
                         • PhD-level technical expertise<br>
                         • Unique combo technology for climate solutions</p>
-                        <a href="https://investorhub-dash.ai-biz.app/company/Airbuild" class="cta-button" target="_blank">📊 View Score Card</a>
                     </div>
                     
                     <div class="winner-card">
                         <h4>🥉 3rd Place: RealEngineers</h4>
-                        <div class="score-badge">Judge's Score: 66.8</div>
                         <p><strong>HR Tech - AI-Powered Engineering Recruitment</strong></p>
                         <p>• Solving 250 candidates per job problem<br>
                         • $212B staffing market opportunity<br>
                         • 150+ customer discovery interviews completed<br>
                         • 6 years defense engineering background</p>
-                        <a href="https://investorhub-dash.ai-biz.app/company/RealEngineers" class="cta-button" target="_blank">📊 View Score Card</a>
                     </div>
                 </div>
             </div>
@@ -429,23 +423,32 @@ def send_report_email(name, email):
                 </div>
             </div>
             
-            <!-- About Seattle Ventures -->
+            <!-- About Seattle Partners LLC -->
             <div class="section">
-                <h2>🏢 About Seattle Ventures Inc.</h2>
+                <h2>🏢 About Seattle Partners LLC</h2>
                 <div class="highlight-box">
-                    <p>Seattle Ventures Inc. was born out of years of hands-on experience working with startups through Seattle Partners LLC. While offering consulting services such as market research, outreach, education, acceleration programs, and proof-of-concept support, We realized these efforts alone weren’t enough—particularly for international startups formed outside the U.S., including but not limited to countries like South Korea, Japan, India, Vietnam, Argentina, and Peru.</p>
-                    
-                    <p style="margin-top: 15px;">To truly help high-potential startups reach meaningful milestones, we founded Seattle Ventures with a more comprehensive approach.</p>
-                    
-                    <h3 style="color: #6B73FF; margin: 20px 0 10px 0;">What We Do:</h3>
+                    <p>Seattle Partners LLC is a dynamic organization dedicated to fostering innovation and entrepreneurship in the Pacific Northwest region. As the organizing force behind events like the Startup World Cup Seattle Regional, Seattle Partners connects entrepreneurs, investors, and industry leaders to create meaningful opportunities for growth and collaboration.</p>
+
+                    <h3 style="color: #ffd700; margin: 20px 0 10px 0;">Our Mission</h3>
+                    <p>To build a thriving startup ecosystem in Seattle by facilitating connections between entrepreneurs and the resources they need to succeed, from early-stage funding to strategic partnerships and market opportunities.</p>
+
+                    <h3 style="color: #ffd700; margin: 20px 0 10px 0;">What We Do</h3>
                     <ul style="margin: 15px 0;">
-                        <li>Pre-seed and seed investment</li>
-                        <li>Equity-based acceleration programs</li>
-                        <li>Fee-based short-term acceleration (e.g. 3-month revenue or growth guarantee programs, in partnership with Fulcrum Group)</li>
-                        <li>Cross-border acceleration, bridging global startups with the U.S. market</li>
+                        <li>Organize world-class startup competitions and pitch events</li>
+                        <li>Connect entrepreneurs with investors and mentors</li>
+                        <li>Facilitate strategic partnerships between startups and established companies</li>
+                        <li>Promote Seattle as a global hub for innovation and technology</li>
+                        <li>Support the growth of the Pacific Northwest startup ecosystem</li>
                     </ul>
-                    
-                    <p style="margin-top: 20px; font-style: italic; text-align: center; color: #6B73FF; font-weight: bold;">Seattle Ventures exists to empower innovative founders to scale faster and smarter—across borders, stages, and industries.</p>
+
+                    <h3 style="color: #ffd700; margin: 20px 0 10px 0;">Coming Soon:</h3>
+                    <p>Seattle Partners will evolve into Seattle Ventures with the launch of a new venture fund, aiming to make a greater impact on the PNW startup community. Seattle Ventures will focus on pre-seed and seed investments, offer equity-based acceleration programs, and run mission-based acceleration initiatives such as three-month revenue or growth guarantee programs. Additionally, the firm will provide cross-border acceleration services, helping bridge global startups with the U.S. market.</p>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="https://seattlepartners.us/" class="cta-button" target="_blank" style="background-color: #ffd700; color: #232b39; font-size: 18px; padding: 14px 32px; border-radius: 30px; font-weight: bold; display: inline-block; text-decoration: none;">
+                            🌐 Visit Seattle Partners Website
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
